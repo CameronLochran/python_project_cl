@@ -1,2 +1,8 @@
 import pdb
-from models.user import User
+from models.spendings import User
+
+
+
+
+
+pdb.set_trace()
