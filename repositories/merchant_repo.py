@@ -35,15 +35,21 @@ def delete_all():
     sql = "DELETE FROM merchants"
     run_sql(sql)
 
-def merchants_for_user(tag):
-    merchants = []
 
-    sql = " SELECT merchants.* FROM merchants INNER JOIN transaction ON transactions.merchant_id = merchant.id WHERE tag_id = %s"
-    values = [tag.id]
-    results = run_sql(sql, values)
+def delete(id):
+    sql = "DELETE FROM merchants WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
-    for row in results:
-        merchant = Merchant(row["name"], row["id"])
-        merchants.append(merchant)
+# def merchants_for_user(tag):
+#     merchants = []
 
-        return merchants
+#     sql = " SELECT merchants.* FROM merchants INNER JOIN transaction ON transactions.merchant_id = merchant.id WHERE tag_id = %s"
+#     values = [tag.id]
+#     results = run_sql(sql, values)
+
+#     for row in results:
+#         merchant = Merchant(row["name"], row["id"])
+#         merchants.append(merchant)
+
+#         return merchants

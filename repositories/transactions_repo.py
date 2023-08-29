@@ -12,6 +12,16 @@ def save(transaction):
     transaction.id = results[0]['id']
     return transaction
 
+def select(id):
+    tag = None
+    sql = "SELECT * FROM tags WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        tag = Tag(result['name'], result['id'] )
+    return tag
 
 def select_all():
     transactions = []
@@ -22,7 +32,7 @@ def select_all():
     for row in results:
         tag = tag_repo.select(row['tag_id'])
         merchant = merchant_repo.select(row['merchant_id'])
-        transaction = Transactions(tag, merchant, row['review'], row['id'])
+        transaction = Transactions(tag, merchant, row['amount'], row['id'])
         transactions.append(transaction)
     return transactions
 

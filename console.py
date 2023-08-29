@@ -38,9 +38,10 @@ transactions_repo.save(transaction2)
 transaction3 = Transactions(merchant2, tag3, 89.99)
 transactions_repo.save(transaction3)
 
-merchants = merchant_repo.merchants_for_user(tag1)
+# merchants = merchant_repo.merchants_for_user(tag1)
 
-tags = tag_repo.tag_for_merchant(merchant2)
+# tags = tag_repo.tag_for_merchant(merchant2)
 
+results = transactions_repo.select()
 
 pdb.set_trace()
