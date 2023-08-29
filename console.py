@@ -42,6 +42,4 @@ transactions_repo.save(transaction3)
 
 # tags = tag_repo.tag_for_merchant(merchant2)
 
-results = transactions_repo.select()
-
 pdb.set_trace()
