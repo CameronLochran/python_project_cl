@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Tags</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  
+  </tr>
+  {% for tag in tags %}
+  <tr>
+    <td><a href="/tags/{{ tags.id }}"> {{tag.name}} </a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

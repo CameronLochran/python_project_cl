@@ -3,9 +3,9 @@ from flask import Blueprint
 from models.tag import Tag
 import repositories.tag_repo as tag_repo
 import repositories.merchant_repo as merchant_repo
-tag_blueprint = Blueprint("users", __name__)
+tag_blueprint = Blueprint("tags", __name__)
 
-@tag_blueprint.route("/users")
+@tag_blueprint.route("/tags")
 def users():
     tags = tag_repo.select_all() # NEW
     return render_template("tags/index.html", tags = tags)
