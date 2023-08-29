@@ -22,4 +22,25 @@ tag_repo.save(tag3)
 
 merchant1 = Merchant("DistroKid.com")
 merchant_repo.save(merchant1)
+
+merchant2 = Merchant("Republic Records")
+merchant_repo.save(merchant2)
+
+merchant3 = Merchant("M.W.A Music")
+merchant_repo.save(merchant3)
+
+transaction1 = Transactions(merchant1, tag1, 22.99)
+transactions_repo.save(transaction1)
+
+transaction2 = Transactions(merchant1, tag2, 39.99)
+transactions_repo.save(transaction2)
+
+transaction3 = Transactions(merchant2, tag3, 89.99)
+transactions_repo.save(transaction3)
+
+merchants = merchant_repo.merchants_for_user(tag1)
+
+tags = tag_repo.tag_for_merchant(merchant2)
+
+
 pdb.set_trace()

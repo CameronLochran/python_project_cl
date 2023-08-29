@@ -4,22 +4,46 @@ from models.merchant import Merchant
 from models.tag import Tag
 
 def save(merchant):
-    sql = "INSERT INTO locations(name, category) VALUES ( %s, %s ) RETURNING id"
-    values = [merchant.name, merchant.id]
+    sql = "INSERT INTO merchants (name) VALUES ( %s ) RETURNING id"
+    values = [merchant.name]
     results = run_sql( sql, values )
     merchant.id = results[0]['id']
     return merchant
 
+def select_all():
+    merchants = []
+
+    sql = "SELECT * FROM merchants"
+    results = run_sql(sql)
+
+    for row in results:
+        location = Merchant(row['name'], row['id'])
+        merchants.append(location)
+    return merchants
+
 def select(id):
     merchant = None
-    sql = "SELECT * FROM locations WHERE id = %s"
+    sql = "SELECT * FROM merchants WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        merchant = Merchant(result['name'], result['category'], result['id'] )
+        merchant = Merchant(result['name'], result['id'] )
     return merchant
 
 def delete_all():
     sql = "DELETE FROM merchants"
     run_sql(sql)
+
+def merchants_for_user(tag):
+    merchants = []
+
+    sql = " SELECT merchants.* FROM merchants INNER JOIN transaction ON transactions.merchant_id = merchant.id WHERE tag_id = %s"
+    values = [tag.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        merchant = Merchant(row["name"], row["id"])
+        merchants.append(merchant)
+
+        return merchants
