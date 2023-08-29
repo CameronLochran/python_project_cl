@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Transaction</h1>
+
+<p class="btn--wrapper">
+  <a class="btn btn--action" href="/visits/new">New Transaction</a>
+</p>
+
+<ul>
+  {% for visit in visits %}
+  <li>
+  <p>{{ transaction.tag.name }} - {{ transaction.merchant.name }} </p>
+  <p>"<i>{{transaction.review}}</i>"</p>
+    <p>
+      <form action="/transaction/{{ transaction.id }}/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+      </form>
+    </p>
+  </li>
+  {% endfor %}
+</ul>
+
+
+{% endblock %}

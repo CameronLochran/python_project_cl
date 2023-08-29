@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> {{user.name}} </h1>
+<h1> {{tag.name}} </h1>
 
-<h3>Visited:</h3>
+<h3>Transactions:</h3>
 <ul>
-    {% for location in locations %}
-    <li>{{location.name}}</li>
+    {% for merchant in merchants %}
+    <li>{{merchant.name}}</li>
     {% endfor %}
 </ul>
 
