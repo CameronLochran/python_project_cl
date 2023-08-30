@@ -7,9 +7,11 @@ import repositories.tag_repo as tag_repo
 import repositories.merchant_repo as merchant_repo
 import repositories.transactions_repo as transactions_repo
 
+# pdb.set_trace()
+transactions_repo.delete_all()
 tag_repo.delete_all()
 merchant_repo.delete_all()
-transactions_repo.delete_all()
+
 
 tag1 = Tag("Mike Dean Merch")
 tag_repo.save(tag1)
@@ -37,9 +39,5 @@ transactions_repo.save(transaction2)
 
 transaction3 = Transactions(merchant2, tag3, 89.99)
 transactions_repo.save(transaction3)
-
-# merchants = merchant_repo.merchants_for_user(tag1)
-
-# tags = tag_repo.tag_for_merchant(merchant2)
 
 pdb.set_trace()

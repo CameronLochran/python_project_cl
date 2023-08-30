@@ -4,13 +4,15 @@ from models.transactions import Transactions
 import repositories.transactions_repo as transaction_repo
 import repositories.tag_repo as tag_repo
 import repositories.merchant_repo as merchant_repo
+import pdb
 
 transactions_blueprint = Blueprint("transactions", __name__)
 
 @transactions_blueprint.route("/transactions")
 def transactions():
+    # pdb.set_trace()
     transactions = transaction_repo.select_all() # NEW
-    return render_template("transaction/index.html", transactions = transactions)
+    return render_template("transactions/index.html", transactions = transactions)
 
 @transactions_blueprint.route("/transactions/new", methods=['GET'])
 def new_task():

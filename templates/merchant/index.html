@@ -7,13 +7,11 @@
     <tr>
         <th>Name</th>
         <th></th>
-        <th>Tag</th>
+    
     </tr>
     {% for merchant in merchants %}
     <tr>
         <td><a href="/merchants/{{ merchants.id }}"> {{merchant.name}}</a></td>
-        <td>|</td>
-        <td>{{ merchant.id}}</td>
     </tr>
     {% endfor %}
 </table>

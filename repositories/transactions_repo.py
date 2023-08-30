@@ -4,6 +4,7 @@ from models.tag import Tag
 from models.merchant import Merchant 
 import repositories.merchant_repo as merchant_repo
 import repositories.tag_repo as tag_repo
+import pdb
 
 def save(transaction):
     sql = "INSERT INTO transactions ( tag_id, merchant_id, amount ) VALUES ( %s, %s, %s ) RETURNING id"
@@ -24,6 +25,7 @@ def select(id):
     return tag
 
 def select_all():
+    # pdb.set_trace()
     transactions = []
 
     sql = "SELECT * FROM transactions"
@@ -32,7 +34,7 @@ def select_all():
     for row in results:
         tag = tag_repo.select(row['tag_id'])
         merchant = merchant_repo.select(row['merchant_id'])
-        transaction = Transactions(tag, merchant, row['amount'], row['id'])
+        transaction = Transactions(merchant, tag,  row['amount'], row['id'])
         transactions.append(transaction)
     return transactions
 
