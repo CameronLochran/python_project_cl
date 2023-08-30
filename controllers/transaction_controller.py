@@ -14,13 +14,17 @@ def transactions():
     transactions = transaction_repo.select_all() # NEW
     return render_template("transactions/index.html", transactions = transactions)
 
-@transactions_blueprint.route("/transactions/new", methods=['GET'])
+@transactions_blueprint.route("/transactions/<id>")
+def show(id):
+    transaction = transaction_repo.select(id) 
+    return render_template("transactions/show.html", transaction = transaction)
+
+
+@transactions_blueprint.route("/transactions/new")
 def new_task():
-    # print("triggered")
     tags = tag_repo.select_all()
     merchants = merchant_repo.select_all()
-    print(tags, merchants)
-    return render_template("transaction/new.html", tags = tags, merchants = merchants)
+    return render_template("transactions/new.html", tags = tags, merchants = merchants)
 
 @transactions_blueprint.route("/transactions",  methods=['POST'])
 def create_task():

@@ -43,3 +43,4 @@ def create_tag():
 def delete_task(id):
     tag_repo.delete(id)
     return redirect('/tags')
+
