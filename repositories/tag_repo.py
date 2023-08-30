@@ -43,16 +43,16 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
     
-# def tag_for_merchant(merchant):
-#     tags = []
+def tag_for_merchant(merchant):
+    tags = []
 
-#     sql = "SELECT tags.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id WHERE merchant_id = %s"
-#     values = [merchant.id]
+    sql = "SELECT tags.* FROM tags INNER JOIN transactions ON transactions.tag_id = tags.id WHERE merchant_id = %s"
+    values = [merchant.id]
     
-#     results = run_sql(sql, values)
+    results = run_sql(sql, values)
 
-#     for row in results:
-#         tag = Tag(row['name'], row['id'])
-#         tags.append(tag)
+    for row in results:
+        tag = Tag(row['name'], row['id'])
+        tags.append(tag)
 
-#     return tags
+    return tags

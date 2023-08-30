@@ -20,7 +20,7 @@ def new_task():
     tags = tag_repo.select_all()
     merchants = merchant_repo.select_all()
     print(tags, merchants)
-    return render_template("transactions/new.html", tags = tags, merchants = merchants)
+    return render_template("transaction/new.html", tags = tags, merchants = merchants)
 
 @transactions_blueprint.route("/transactions",  methods=['POST'])
 def create_task():

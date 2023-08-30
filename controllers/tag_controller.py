@@ -15,7 +15,9 @@ def tags():
 @tag_blueprint.route("/tags/<id>")
 def show(id):
     tag = tag_repo.select(id)
-    merchants = merchant_repo.tag_for_merchant(tag)
+    merchants = merchant_repo.merchants_for_tag(tag)
+    print(tag.name)
+    print(tag.id)
     return render_template("tag/show.html", tag=tag, merchants = merchants)
 
 @tag_blueprint.route("/tags/new", methods=['GET'])
