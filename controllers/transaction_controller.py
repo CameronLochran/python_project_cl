@@ -16,18 +16,21 @@ def transactions():
 
 @transactions_blueprint.route("/transactions/new", methods=['GET'])
 def new_task():
-    tags = transaction_repo.select_all()
-    merchants = transaction_repo.select_all()
+    # print("triggered")
+    tags = tag_repo.select_all()
+    merchants = merchant_repo.select_all()
+    print(tags, merchants)
     return render_template("transactions/new.html", tags = tags, merchants = merchants)
 
-@transactions_blueprint.route("/visits",  methods=['POST'])
+@transactions_blueprint.route("/transactions",  methods=['POST'])
 def create_task():
+    print("triggered")
     tag_id = request.form['tag_id']
     merchant_id = request.form['merchant_id']
-    review = request.form['review']
+    amount = request.form['amount']
     tag = tag_repo.select(tag_id)
-    location = merchant_repo.select(merchant_id)
-    transactions = Transactions(tag, location, review)
+    merchant = merchant_repo.select(merchant_id)
+    transactions = Transactions(merchant, tag, amount)
     transaction_repo.save(transactions)
     return redirect('/transactions')
 

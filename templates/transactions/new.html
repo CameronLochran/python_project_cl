@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Add a Transaction</h1>
 
-<form action="/transaction" method="post">
+<form action="/transactions" method="post">
   <label for="tag">Select a tag:</label>
     <select name="tag_id" id="tag">
       {% for tag in tags %}
@@ -20,7 +20,7 @@
   
 
   <label for="review">Add an Amount</label>
-  <textarea name="review" id="review" cols="30" rows="10"></textarea>
+  <textarea name="amount" id="review" cols="30" rows="10"></textarea>
   <input class="btn btn--action" type='submit' value="Visit">
 </form>
 
