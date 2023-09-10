@@ -4,6 +4,7 @@ from models.merchant import Merchant
 from models.tag import Tag
 import repositories.merchant_repo as merchant_repo
 import repositories.tag_repo as tag_repo
+import repositories.transactions_repo as trans_repo
 
 merchant_blueprint = Blueprint("merchants", __name__)
 
@@ -20,8 +21,12 @@ def show(id):
 @merchant_blueprint.route("/merchants/<id>/edit", methods=['GET'])
 def edit_merchant(id):
     merchant = merchant_repo.select(id)
-    tags = tag_repo.select_all()
-    return render_template('merchants/edit.html', merchant = merchant, all_tags = tags)
+    return render_template('merchant/edit.html', merchant = merchant)
 
-# UPDATE
-# PUT '/tasks/<id>'
+@merchant_blueprint.route("/merchants/<id>",  methods=['POST'])
+def update_transaction(id):
+    merchant = merchant_repo.select(id)
+    name = request.form['name']
+    merchant.name = name
+    merchant_repo.update(merchant)
+    return redirect('/merchants')

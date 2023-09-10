@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> {{transaction.name}} </h1>
-
-<p>id: {{ transaction.id }}</p>
-
 <h3>The Transaction:</h3>
-<ul>
-    {% for transaction in transactions %}
-    <li>{{tag.name}}</li>
-    {% endfor %}
-</ul>
+<div>
+    <p>Tag : {{ transaction.tag.name }} -  Merchant :{{ transaction.merchant.name }} </p>
+    <p>"<i>Amount: {{transaction.amount}}</i>"</p>
+      <p>
+        <form action="/transactions/{{ transaction.id }}/edit" method="POST">
+          <input class="btn btn--danger" type="submit" value="Edit" />
+        </form>
+      </p>
+</div>
 
 {% endblock %}

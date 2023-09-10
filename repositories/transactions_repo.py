@@ -14,15 +14,16 @@ def save(transaction):
     return transaction
 
 def select(id):
-    tag = None
-    sql = "SELECT * FROM tags WHERE id = %s"
+    sql = "SELECT * FROM transactions WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)
 
     if results:
-        result = results[0]
-        tag = Tag(result['name'], result['id'] )
-    return tag
+        for row in results:
+            tag = tag_repo.select(row['tag_id'])
+            merchant = merchant_repo.select(row['merchant_id'])
+            transaction = Transactions(merchant, tag,  row['amount'], row['id'])
+    return transaction
 
 def select_all():
     # pdb.set_trace()
@@ -48,3 +49,8 @@ def delete(id):
     sql = "DELETE FROM transactions WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def update(transaction):
+    sql = "UPDATE transactions SET ( tag_id, merchant_id, amount )  = ( %s, %s, %s ) WHERE id = %s"
+    values = [transaction.tag.id, transaction.merchant.id, transaction.amount, transaction.id]
+    run_sql( sql, values )

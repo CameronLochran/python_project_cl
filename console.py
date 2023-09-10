@@ -13,13 +13,13 @@ tag_repo.delete_all()
 merchant_repo.delete_all()
 
 
-tag1 = Tag("Mike Dean Merch")
+tag1 = Tag("Mike Dean")
 tag_repo.save(tag1)
 
-tag2 = Tag("Jocelyn Merch")
+tag2 = Tag("Jocelyn")
 tag_repo.save(tag2)
 
-tag3 = Tag("Tedros Merch")
+tag3 = Tag("Tedros")
 tag_repo.save(tag3)
 
 merchant1 = Merchant("DistroKid.com")

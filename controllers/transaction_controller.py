@@ -19,6 +19,12 @@ def show(id):
     transaction = transaction_repo.select(id) 
     return render_template("transactions/show.html", transaction = transaction)
 
+@transactions_blueprint.route("/transactions/<id>/edit", methods=['POST'])
+def edit(id):
+    transaction = transaction_repo.select(id)
+    # transaction.amount = request.form['amount']
+    # transaction_repo.update(transaction)
+    return render_template("transactions/edit.html", transaction = transaction)
 
 @transactions_blueprint.route("/transactions/new")
 def new_task():
@@ -34,11 +40,20 @@ def create_task():
     amount = request.form['amount']
     tag = tag_repo.select(tag_id)
     merchant = merchant_repo.select(merchant_id)
-    transactions = Transactions(merchant, tag, amount)
-    transaction_repo.save(transactions)
+    transaction = Transactions(merchant, tag, amount)
+    transaction_repo.save(transaction)
+    return redirect('/transactions')
+
+@transactions_blueprint.route("/transactions/<id>",  methods=['POST'])
+def update_transaction(id):
+    transaction = transaction_repo.select(id)
+    amount = request.form['amount']
+    transaction.amount = amount
+    transaction_repo.update(transaction)
     return redirect('/transactions')
 
 @transactions_blueprint.route("/transactions/<id>/delete", methods=['POST'])
 def delete_task(id):
     transaction_repo.delete(id)
     return redirect('/transactions')
+
