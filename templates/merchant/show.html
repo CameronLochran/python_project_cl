@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<style>
+  body{
+    place-items: center;
+  }
+</style>
+<center>
     <h1> {{merchant.name}} </h1>
 
   <a href="/merchants/{{ merchant.id }}/edit"> EDIT Merchant </a>
-   
+</center>   
 {% endblock %}

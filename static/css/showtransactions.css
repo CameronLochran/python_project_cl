@@ -1,0 +1,10 @@
+body{
+    place-items: center;
+  }
+
+  div.transaction-details{
+    border: solid;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-color: whitesmoke;
+  }

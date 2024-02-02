@@ -13,7 +13,7 @@ def save(merchant):
 def select_all():
     merchants = []
 
-    sql = "SELECT * FROM merchants"
+    sql = "SELECT * FROM merchants "
     results = run_sql(sql)
 
     for row in results:

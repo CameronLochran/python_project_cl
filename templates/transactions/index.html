@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+  body{
+    place-items: center;
+  }
+</style>
+<center>
 <h1>Transaction</h1>
 
 <p class="btn--wrapper">
   <a class="btn btn--action" href="/transactions/new">New Transaction</a>
 </p>
 
-<ul>
+<div>
   {% for transaction in transactions %}
-  <li>
+  <div class="transaction-details">
   <p>Tag : {{ transaction.tag.name }} -  Merchant :{{ transaction.merchant.name }} </p>
   <p>"<i>Amount: {{transaction.amount}}</i>"</p>
     <p>
@@ -18,9 +24,9 @@
       </form>
     </p>
     <a href="/transactions/{{transaction.id}}">See More Details</a>
-  </li>
+  </div>
   {% endfor %}
-</ul>
-
+</div>
+</center>
 
 {% endblock %}

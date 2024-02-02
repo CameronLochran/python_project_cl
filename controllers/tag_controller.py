@@ -27,6 +27,12 @@ def new_tag():
     print(merchants, transactions)
     return render_template("/tags/new", transactions = transactions, merchants = merchants)
 
+#On tag page
+#creating a tag
+#On rendered input transaction id, merchant id and amount
+#sets tag to new tag
+#saves tag
+#redirects to /tags
 @tag_blueprint.route("/tags", methods=['POST'])
 def create_tag():
     print("triggered")

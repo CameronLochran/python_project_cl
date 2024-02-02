@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+  body{
+    place-items: center;
+  }
+
+  div.transaction-details{
+    border: solid;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-color: whitesmoke;
+  }
+</style>
+<center>
 <h3>The Transaction:</h3>
-<div>
+<div className="transaction-details">
     <p>Tag : {{ transaction.tag.name }} -  Merchant :{{ transaction.merchant.name }} </p>
-    <p>"<i>Amount: {{transaction.amount}}</i>"</p>
-      <p>
+    <p><i>Amount: {{transaction.amount}}</i></p>
+    <br/>
+</div>
+<div>
+  <p>
         <form action="/transactions/{{ transaction.id }}/edit" method="POST">
           <input class="btn btn--danger" type="submit" value="Edit" />
         </form>
       </p>
 </div>
+      
 
+</center>
 {% endblock %}

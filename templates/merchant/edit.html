@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<style>
+    body{
+      place-items: center;
+    }
+</style>
+<center>
 <h1>Update {{ merchant.name }}'s Name</h1>
 <form action="/merchants/{{merchant.id}}" method="POST">
     <div>
-        <label for="name">Amount:</label>
+        <label for="name">Name:</label>
         <input type="text" id ="name" name="name" value="{{ merchant.name }}" required autofocus>
     </div>
 
     <input type="submit" value="Update Name">
 </form>
-
+</center>
 {% endblock %}

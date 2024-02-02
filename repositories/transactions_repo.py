@@ -29,10 +29,11 @@ def select_all():
     # pdb.set_trace()
     transactions = []
 
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT * FROM transactions ORDER BY amount DESC;"
     results = run_sql(sql)
 
     for row in results:
+        
         tag = tag_repo.select(row['tag_id'])
         merchant = merchant_repo.select(row['merchant_id'])
         transaction = Transactions(merchant, tag,  row['amount'], row['id'])

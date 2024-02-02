@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    body{
+      place-items: center;
+    }
+</style>
+<center>
 <h1> {{tag.name}} </h1>
 
 <h3>Transactions:</h3>
-<ul>
+<div>
     {% for merchant in merchants %}
-    <li>{{merchant.name}}</li>
+    <p>{{merchant.name}}</p>
     {% endfor %}
-</ul>
-
+</div>
+</center>
 {% endblock %}

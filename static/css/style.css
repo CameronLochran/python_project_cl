@@ -1,3 +1,42 @@
+/* body {
+    background-image: url('FATD.jpeg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: scroll;
+} */
 body {
-    background-image: url('static/images/FATD.jpeg');
+  background-color: rgb(147, 129, 129);
+  background-image: url("../images/wp7330742.jpg");
+  color: rgb(255, 255, 255);
+  place-items: center;
+  font-size: 25px;
+  font-family: "Roboto", sans-serif;
+}
+
+div.transaction-details {
+  border-top: 1px;
+  border-bottom: 1px;
+  border-color: whitesmoke;
+  padding: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+  background-color: white;
+  color: rgb(147, 129, 129);
+  padding: 10px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+.default-page{
+    background-color: rgb(212, 212, 212);
+    width: 700px;
+    border-radius: 50px;
+    padding: 3%;
+    justify-content: center;
 }

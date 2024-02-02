@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+  body{
+    place-items: center;
+  }
+</style>
+<center>
 <h1>Add a Transaction</h1>
 
 <form action="/transactions" method="post">
@@ -23,5 +29,5 @@
   <input type="number" name="amount" id="review">
   <input class="btn btn--action" type='submit' value="Add">
 </form>
-
+</center>
 {% endblock %}

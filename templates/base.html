@@ -5,26 +5,31 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
+<center>
 <body>
-<main class="flex flex--row">
+<br><br><br><br><br><br><br>
+<main class="default-page">
   <nav>
-    <ul>
-      <li>
-        <a href="/merchants">Merchants</a>
-      </li>
-      <li>
-        <a href="/tags">tags</a>
-      </li>
-      <li>
-        <a href="/transactions">Transactions</a>
-      </li>
-    </ul>
+    <p>
+      
+      <p>
+        <a href="/merchants" class="merchants-link">Merchants</a>
+      </p>
+      <p>
+        <a href="/tags" class="tags-link">tags</a>
+      </p>
+      <p>
+        <a href="/transactions" class="transaction-link">Transactions</a>
+      </p>
+    </p>
   </nav>
   <section id="content">
       {% block content %}
 
       {% endblock%}
   </section>
-  </main>
+</main>
+<br><br><br><br><br><br><br>
 </body>
+</center>
 </html>
